@@ -1,4 +1,4 @@
-package com.bigboss.bigboss;
+package com.bigboss;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
