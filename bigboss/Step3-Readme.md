@@ -15,3 +15,45 @@ Spring Security configuration
 Password encryption with BCrypt
 Refresh token support
 Authentication unit tests
+
+
+🚀 Part 3 – Authentication Module
+
+This module will contain approximately 32 Java classes.
+
+authentication
+│
+├── controller
+│      AuthController
+│
+├── dto
+│      LoginRequest
+│      LoginResponse
+│      RegisterRequest
+│      RegisterResponse
+│      JwtResponse
+│
+├── entity
+│      User
+│      Role
+│      UserRole
+│
+├── repository
+│      UserRepository
+│      RoleRepository
+│      UserRoleRepository
+│
+├── service
+│      AuthService
+│      JwtService
+│      CustomUserDetailsService
+│
+├── security
+│      JwtAuthenticationFilter
+│      JwtAuthenticationEntryPoint
+│      SecurityConfig
+│
+├── mapper
+│      UserMapper
+│
+└── validator
