@@ -1,11 +1,14 @@
 package com.bigboss.entity;
 
-import java.time.LocalDateTime;
+import com.bigboss.config.*;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,29 +16,36 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="users")
+@Table(
+    name = "users",
+    uniqueConstraints = {
+        @UniqueConstraint(name = "uk_user_email", columnNames = "email")
+    }
+)
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class User extends BaseEntity {
 
-	@Id
-	@GeneratedValue
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	private String firstName;
+    @Column(nullable = false,length = 100)
+    private String firstName;
 
-	private String lastName;
+    @Column(nullable = false,length = 100)
+    private String lastName;
 
-	private String email;
+    @Column(nullable = false,length = 150)
+    private String email;
 
-	private String password;
+    @Column(nullable = false)
+    private String password;
 
-	private Boolean enabled;
+    @Builder.Default
+    private Boolean enabled = true;
 
-	private LocalDateTime createdAt;
-
-	private LocalDateTime updatedAt;
 }
